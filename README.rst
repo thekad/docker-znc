@@ -2,6 +2,8 @@ ZNC Bouncer
 -----------
 
 Just a simple `ZNC <https://znc.in>_` bouncer with optional support for SSL.
+Heavily based on <https://github.com/jimeh/docker-znc> just wanted a smaller
+image
 
 
 Running
