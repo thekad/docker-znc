@@ -9,17 +9,20 @@ image
 Running
 =======
 
+The container will refuse to start with a root account (yeah yeah) so you need
+to pass ``--user=foo``
+
 An ephemeral container listening on standard port 6667::
 
-    docker run --publish localhost:6667:6667 docker.io/thekad/znc:latest
+    docker run --user=`id -u` --publish localhost:6667:6667 docker.io/thekad/znc:latest
 
 An ephemeral container listening on a different port::
 
-    docker run --publish localhost:6767:6767 docker.io/thekad/znc:latest
+    docker run --user=`id -u` --publish localhost:6767:6767 docker.io/thekad/znc:latest
 
 A container with persistent config/data::
 
-    docker run --publish 6667:6667 --volume /var/lib/znc:/data:rw docker.io/thekad/znc:latest
+    docker run --user=`id -u` --publish 6667:6667 --volume /var/lib/znc:/data:rw docker.io/thekad/znc:latest
 
 
 Remarks
