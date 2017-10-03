@@ -9,9 +9,6 @@ image
 Running
 =======
 
-The container will refuse to start with a root account (yeah yeah) so you need
-to pass ``--user=foo``
-
 An ephemeral container listening on standard port 6667::
 
     docker run --user=`id -u` --publish localhost:6667:6667 docker.io/thekad/znc:latest
@@ -24,6 +21,12 @@ A container with persistent config/data::
 
     docker run --user=`id -u` --publish 6667:6667 --volume /var/lib/znc:/data:rw docker.io/thekad/znc:latest
 
+ZNC by default refuses to start as root, so you need to pass ``--user=foo`` to
+your docker run call *or* do something like this::
+
+    docker run --publish 6667:6667 docker.io/thekad/latest /entrypoint.sh --allow-root
+
+.. NOTE:: Keep in mind that ZNC will *still* wait 30 seconds before running as root
 
 Remarks
 =======
