@@ -1,10 +1,5 @@
-#!/bin/bash -x
+#!/bin/sh -x
 # adjusted from https://github.com/jimeh/docker-znc/blob/master/docker-entrypoint.sh
-
-if [ `id -u` -eq 0 ]; then
-  echo "Let's not run this as root, ok?"
-  exit 1
-fi
 
 # Options.
 DATADIR="/data"
