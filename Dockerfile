@@ -1,7 +1,7 @@
 FROM docker.io/alpine:latest
 
 RUN apk update && \
-    apk add bash g++ znc znc-dev znc-extra ca-certificates
+    apk add dumb-init g++ znc znc-dev znc-extra ca-certificates
 
 RUN mkdir -p /data/configs && chmod -R 0775 /data
 
@@ -12,4 +12,5 @@ VOLUME ["/data"]
 
 EXPOSE 6667
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/dumb-init"]
+CMD ["/entrypoint.sh"]
