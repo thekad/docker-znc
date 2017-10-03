@@ -1,9 +1,7 @@
 FROM docker.io/alpine:latest
 
-ENV PORT 6667
-
 RUN apk update && \
-    apk add bash g++ znc znc-dev znc-extra
+    apk add bash g++ znc znc-dev znc-extra ca-certificates
 
 RUN mkdir -p /data/configs && chmod -R 0775 /data
 
@@ -12,6 +10,6 @@ ADD znc.conf.default /znc.conf.default
 
 VOLUME ["/data"]
 
-EXPOSE ${PORT}
+EXPOSE 6667
 
 ENTRYPOINT ["/entrypoint.sh"]
