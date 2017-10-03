@@ -36,7 +36,6 @@ if [ ! -f "${DATADIR}/configs/znc.conf" ]; then
   echo "Creating a default configuration..."
   mkdir -vp "${DATADIR}/configs"
   cat /znc.conf.default | \
-    sed -e "s%##PORT##%${PORT}%" | \
     sed -e "s%##SSL##%${SSL}%" | \
     sed -e "s%##SSL_CERT_FILE##%${SSL_CERT_FILE}%" > "${DATADIR}/configs/znc.conf"
 fi

@@ -7,7 +7,7 @@ LoadModule = webadmin
     AllowWeb = true
     IPv4 = true
     IPv6 = true
-    Port = ##PORT##
+    Port = 6667
     URIPrefix = /
     SSL = ##SSL##
 </Listener>
