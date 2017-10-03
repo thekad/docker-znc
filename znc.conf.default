@@ -1,0 +1,29 @@
+Version = 1.6.5
+LoadModule = webadmin
+##SSL_CERT_FILE##
+
+<Listener listener0>
+    AllowIRC = true
+    AllowWeb = true
+    IPv4 = true
+    IPv6 = true
+    Port = ##PORT##
+    URIPrefix = /
+    SSL = ##SSL##
+</Listener>
+
+<User admin>
+    Pass       = sha256#00793765305dfc3e7bba28267fe9d9e2c721ebef4e20f3a89720265a89ee6a4f#N!lgZM8S.HZ4zH?)vFoW#
+    Admin      = true
+    Nick       = admin
+    AltNick    = admin_
+    Ident      = admin
+    RealName   = Got ZNC?
+    Buffer     = 50
+    AutoClearChanBuffer = true
+    ChanModes  = +stn
+
+    LoadModule = chansaver
+    LoadModule = controlpanel
+    LoadModule = perform
+</User>
