@@ -15,7 +15,7 @@ An ephemeral container listening on standard port 6667::
 
 An ephemeral container listening on a different port::
 
-    docker run --user=`id -u` --publish localhost:6767:6767 docker.io/thekad/znc:latest
+    docker run --user=`id -u` --publish localhost:6767:6667 docker.io/thekad/znc:latest
 
 A container with persistent config/data::
 
@@ -27,6 +27,14 @@ your docker run call *or* do something like this::
     docker run --publish 6667:6667 docker.io/thekad/latest /entrypoint.sh --allow-root
 
 .. NOTE:: Keep in mind that ZNC will *still* wait 30 seconds before running as root
+
+A container with a provided SSL will bootstrap with SSL support::
+
+    docker run --publish 6697:6667 --volume /path/to/your/znc/pem:/ssl docker.io/thekad/znc:latest
+
+Or you can also override that::
+
+    docker run --publish 6697:6667 --env SSL_PEM=/etc/ssl/fullcert.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
 
 Remarks
 =======
