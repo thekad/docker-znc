@@ -3,6 +3,7 @@
 
 # Options.
 DATADIR="/data"
+PEM_FILE="${SSL_PEM:-/ssl/znc.pem}"
 
 # Build modules from source.
 if [ -d "${DATADIR}/modules" ]; then
@@ -21,9 +22,9 @@ if [ -d "${DATADIR}/modules" ]; then
 fi
 
 SSL="false"
-if [ -f "${DATADIR}/ssl/znc.pem" ]; then
+if [ -f "${PEM_FILE}" ]; then
   SSL="true"
-  SSL_CERT_FILE="SSLCertFile = ${DATADIR}/ssl/znc.pem"
+  SSL_CERT_FILE="SSLCertFile = ${PEM_FILE}"
 fi
 
 # Create default config if it doesn't exist
