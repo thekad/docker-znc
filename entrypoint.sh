@@ -4,6 +4,13 @@
 # Options.
 DATADIR="/data"
 PEM_FILE="${SSL_PEM:-/ssl/znc.pem}"
+DEPS="${DEPENDENCIES}"
+
+if [ -n "$DEPS" ]; then
+  echo "Installing specified dependencies..."
+  apk update
+  apk add $DEPS
+fi
 
 # Build modules from source.
 if [ -d "${DATADIR}/modules" ]; then
