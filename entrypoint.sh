@@ -20,9 +20,11 @@ if [ -d "${DATADIR}/modules" ]; then
   # Build modules.
   for module in $modules; do
     echo "Building module $module..."
-    cd "$(dirname "$module")"
-    znc-buildmod "$(basename $module)"
-    mv -f "$(basename $module .cpp).so /${DATADIR}/modules/"
+    moddir="$(dirname "$module")"
+    modfile="$(basename "$module" .cpp)"
+    cd $moddir
+    znc-buildmod "${modfile}.cpp"
+    mv -f "${modfile}.so" "${DATADIR}/modules/${modfile}.so"
     cd -
   done
 fi
