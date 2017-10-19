@@ -12,12 +12,11 @@ if [ -d "${DATADIR}/modules" ]; then
 
   # Build modules.
   for module in $modules; do
-    if [ -d "$module" ]; then
-      echo "Building module $module..."
-      cd "$(dirname "$module")"
-      znc-buildmod "$module"
-      cd -
-    fi
+    echo "Building module $module..."
+    cd "$(dirname "$module")"
+    znc-buildmod "$(basename $module)"
+    mv -v "$(basename $module .cpp).so /${DATADIR}/modules/"
+    cd -
   done
 fi
 
