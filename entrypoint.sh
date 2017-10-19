@@ -22,7 +22,7 @@ if [ -d "${DATADIR}/modules" ]; then
     echo "Building module $module..."
     cd "$(dirname "$module")"
     znc-buildmod "$(basename $module)"
-    mv -v "$(basename $module .cpp).so /${DATADIR}/modules/"
+    mv -f "$(basename $module .cpp).so /${DATADIR}/modules/"
     cd -
   done
 fi
