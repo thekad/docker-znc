@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh -xe
 # adjusted from https://github.com/jimeh/docker-znc/blob/master/docker-entrypoint.sh
 
 # Options.
