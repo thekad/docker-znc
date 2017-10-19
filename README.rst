@@ -36,6 +36,11 @@ Or you can also override that::
 
     docker run --publish 6697:6667 --env SSL_PEM=/etc/ssl/fullcert.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
 
+You can even install alpine dependency packages for those cases where your plugins need some extra libraries::
+
+    docker run --publish 6667:6667 --env "DEPENDENCIES=curl-dev openssl-dev" docker.io/thekad/znc:latest
+
+
 Remarks
 =======
 
