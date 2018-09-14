@@ -1,9 +1,10 @@
-FROM docker.io/alpine:latest
+FROM docker.io/library/alpine:3.8
 
 ENV SSL_PEM=/ssl/znc.pem
+ARG VERSION=1.7.1-r0
 
 RUN apk update && \
-    apk add dumb-init g++ znc znc-dev znc-extra ca-certificates
+    apk add dumb-init g++ ca-certificates znc=${VERSION} znc-dev=${VERSION} znc-extra=${VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
 ADD znc.conf.default /znc.conf.default
