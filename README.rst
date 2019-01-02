@@ -30,11 +30,11 @@ your docker run call *or* do something like this::
 
 A container with a provided SSL will bootstrap with SSL support::
 
-    docker run --publish 6697:6667 --volume /path/to/your/znc/pem:/ssl docker.io/thekad/znc:latest
+    docker run --publish 6697:6667 --volume /path/to/your/znc/pem/files:/ssl docker.io/thekad/znc:latest
 
 Or you can also override that::
 
-    docker run --publish 6697:6667 --env SSL_PEM=/etc/ssl/fullcert.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
+    docker run --publish 6697:6667 --env SSL_CRT=/etc/ssl/fullchain.pem --env SSL_KEY=/etc/ssl/privkey.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
 
 You can even install alpine dependency packages for those cases where your plugins need some extra libraries::
 
@@ -47,9 +47,10 @@ Remarks
 * Default user and password is ``admin:admin`` CHANGE RIGHT AWAY
 * In all cases, if the configuration doesn't exist, a simple configuration will
   be created (refer to znc.conf.default)
-* If there is a file named ``/data/ssl/znc.pem`` (container's path) then SSL support
-  will be bootstrapped on the first run. This is highly recommended. If you have
-  your own PEM file then just name it ``znc.pem`` and put it in the data volume
+* If there are files named ``/ssl/fullchain.pem``  and ``/ssl/privkey.pem``
+  (container's path) then SSL support will be bootstrapped on the first run.
+  This is highly recommended. If you have your own PEM files then just pass the
+  right paths using environment variables ``SSL_{CRT,KEY,DHP}``
 * Modules inside ``/data/modules`` (container's path) will be automatically built
   on startup with ``znc-buildmod``
 
