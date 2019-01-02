@@ -32,10 +32,10 @@ if [ -d "${DATADIR}/modules" ]; then
 fi
 
 SSL="false"
-if [ -f "${CRT_FILE}" ] && [ -f "${KEY_FILE}" ]; then
+if [ -e "${CRT_FILE}" ] && [ -e "${KEY_FILE}" ]; then
   SSL="true"
   SSL_CERT_FILE="SSLCertFile = ${CRT_FILE}\nSSLKeyFile = ${KEY_FILE}"
-  if [ -f "${DHP_FILE}" ]; then
+  if [ -e "${DHP_FILE}" ]; then
     echo "Diffie-Hellman params file found, enabling"
     SSL_CERT_FILE="${SSL_CERT_FILE}\nSSLDHParamFile = ${DHP_FILE}"
   fi
@@ -44,7 +44,7 @@ else
 fi
 
 # Create default config if it doesn't exist
-if [ ! -f "${DATADIR}/configs/znc.conf" ]; then
+if [ ! -e "${DATADIR}/configs/znc.conf" ]; then
   echo "Creating a default configuration..."
   mkdir -vp "${DATADIR}/configs"
   cat /znc.conf.default | \
