@@ -1,4 +1,4 @@
-Version = 1.6.5
+Version = 1.7.1
 LoadModule = webadmin
 ##SSL_CERT_FILE##
 
