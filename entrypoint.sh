@@ -3,7 +3,9 @@
 
 # Options.
 DATADIR="/data"
-PEM_FILE="${SSL_PEM:-/ssl/znc.pem}"
+CRT_FILE="${SSL_CRT:-/ssl/fullchain.pem}"
+KEY_FILE="${SSL_KEY:-/ssl/privkey.pem}"
+DHP_FILE="${SSL_KEY:-/ssl/dhparam.pem}"
 DEPS="${DEPENDENCIES}"
 
 if [ -n "$DEPS" ]; then
@@ -30,9 +32,15 @@ if [ -d "${DATADIR}/modules" ]; then
 fi
 
 SSL="false"
-if [ -f "${PEM_FILE}" ]; then
+if [ -f "${CRT_FILE}" ] && [ -f "${KEY_FILE}" ]; then
   SSL="true"
-  SSL_CERT_FILE="SSLCertFile = ${PEM_FILE}"
+  SSL_CERT_FILE="SSLCertFile = ${CRT_FILE}\nSSLKeyFile = ${KEY_FILE}"
+  if [ -f "${DHP_FILE}" ]; then
+    echo "Diffie-Hellman params file found, enabling"
+    SSL_CERT_FILE="${SSL_CERT_FILE}\nSSLDHParamFile = ${DHP_FILE}"
+  fi
+else
+  echo "Need both cert ${CRT_FILE} and key ${KEY_FILE} to exist"
 fi
 
 # Create default config if it doesn't exist
