@@ -3,6 +3,7 @@ FROM docker.io/library/alpine:3.8
 ENV SSL_CRT=/ssl/fullchain.pem
 ENV SSL_KEY=/ssl/privkey.pem
 ENV SSL_DHP=/ssl/dhparam.pem
+ENV CXXFLAGS=
 ARG VERSION=1.7.1-r0
 
 RUN apk update && \
