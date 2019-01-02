@@ -25,7 +25,7 @@ if [ -d "${DATADIR}/modules" ]; then
     moddir="$(dirname "$module")"
     modfile="$(basename "$module" .cpp)"
     cd $moddir
-    znc-buildmod "${modfile}.cpp"
+    CXXFLAGS="$CXXFLAGS" LIBS="$CXXFLAGS" znc-buildmod "${modfile}.cpp"
     mv -f "${modfile}.so" "${DATADIR}/modules/${modfile}.so"
     cd -
   done
