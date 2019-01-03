@@ -34,7 +34,7 @@ A container with a provided SSL will bootstrap with SSL support::
 
 Or you can also override that::
 
-    docker run --publish 6697:6667 --env SSL_CRT=/etc/ssl/fullchain.pem --env SSL_KEY=/etc/ssl/privkey.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
+    docker run --publish 6697:6667 --env SSL_CRT=/etc/ssl/fullchain.pem --env SSL_KEY=/etc/ssl/privkey.pem --env SSL_DHP=/etc/ssl/dhparam.pem --volume /path/to/your/certs:/etc/ssl docker.io/thekad/znc:latest
 
 You can even install alpine dependency packages for those cases where your plugins need some extra libraries::
 
