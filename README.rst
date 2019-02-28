@@ -1,3 +1,15 @@
+.. image:: https://img.shields.io/github/tag/thekad/docker-znc.svg
+   :target: https://github.com/thekad/docker-znc/releases
+   :alt: Github
+
+.. image:: https://img.shields.io/docker/automated/thekad/docker-znc.svg
+   :alt: Automated docker builds
+   :target: https://hub.docker.com/r/thekad/docker-znc
+
+.. image:: https://quay.io/repository/thekad/znc/status
+   :alt: Automated Quay builds
+   :target: https://quay.io/repository/thekad/znc
+
 ZNC Bouncer
 -----------
 
