@@ -2,9 +2,9 @@
    :target: https://github.com/thekad/docker-znc/releases
    :alt: Github
 
-.. image:: https://img.shields.io/docker/automated/thekad/docker-znc.svg
+.. image:: https://img.shields.io/docker/automated/thekad/znc.svg
    :alt: Automated docker builds
-   :target: https://hub.docker.com/r/thekad/docker-znc
+   :target: https://hub.docker.com/r/thekad/znc
 
 .. image:: https://quay.io/repository/thekad/znc/status
    :alt: Automated Quay builds
