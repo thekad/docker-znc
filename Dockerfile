@@ -1,12 +1,13 @@
-FROM docker.io/library/alpine:3.8
+FROM docker.io/library/alpine:latest
 
 ENV SSL_CRT=/ssl/fullchain.pem
 ENV SSL_KEY=/ssl/privkey.pem
 ENV SSL_DHP=/ssl/dhparam.pem
 ENV CXXFLAGS=
-ARG VERSION=1.7.1-r0
+ARG VERSION=1.7.4-r0
 
 RUN apk update && \
+    apk upgrade && \
     apk add dumb-init g++ ca-certificates znc=${VERSION} znc-dev=${VERSION} znc-extra=${VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
