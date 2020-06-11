@@ -22,5 +22,5 @@ VOLUME ["/ssl"]
 
 EXPOSE 6667
 
-ENTRYPOINT ["/usr/bin/dumb-init"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/entrypoint.sh"]
