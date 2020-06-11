@@ -5,7 +5,7 @@
 DATADIR="/data"
 CRT_FILE="${SSL_CRT:-/ssl/fullchain.pem}"
 KEY_FILE="${SSL_KEY:-/ssl/privkey.pem}"
-DHP_FILE="${SSL_KEY:-/ssl/dhparam.pem}"
+DHP_FILE="${SSL_DHP:-/ssl/dhparam.pem}"
 DEPS="${DEPENDENCIES}"
 
 if [ -n "$DEPS" ]; then
