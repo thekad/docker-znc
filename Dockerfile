@@ -4,11 +4,10 @@ ENV SSL_CRT=/ssl/fullchain.pem
 ENV SSL_KEY=/ssl/privkey.pem
 ENV SSL_DHP=/ssl/dhparam.pem
 ENV CXXFLAGS=
-ARG VERSION=1.7.4-r0
 
 RUN apk update && \
     apk upgrade && \
-    apk add dumb-init g++ ca-certificates znc=${VERSION} znc-dev=${VERSION} znc-extra=${VERSION}
+    apk add dumb-init g++ ca-certificates znc znc-dev znc-extra
 
 ADD entrypoint.sh /entrypoint.sh
 ADD znc.conf.default /znc.conf.default
